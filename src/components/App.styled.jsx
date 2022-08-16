@@ -8,10 +8,12 @@ export const ContainerTitle = styled.h3`
 export const Container = styled.div`
   margin: 0 auto;
   margin-top: 40px;
-  width: 330px;
-  border: 1px solid black;
-  border-radius: 10px;
+  width: 350px;
+  border: 10px solid #050f64;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center
+  align-items: center;
+  background-color: #85a9ff;
+  
 `;

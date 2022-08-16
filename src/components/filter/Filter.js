@@ -1,5 +1,5 @@
 import React from 'react';
-import { FilterLebel, FileterInput } from './Filter.styled';
+import { FilterLebel, FileterInput, Title } from './Filter.styled';
 import { useDispatch } from 'react-redux/es/exports';
 import { setFilter } from 'redux/contactSlice';
 
@@ -12,7 +12,7 @@ const Filter = () => {
 
   return (
     <FilterLebel>
-      Find contac by name
+      <Title>Find contac by name</Title>
       <FileterInput type="text" name="search" onChange={findFilter} />
     </FilterLebel>
   );

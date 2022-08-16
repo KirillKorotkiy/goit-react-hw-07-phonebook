@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContainerForm, InputForm, ButtonForm } from './ContactsForm.styled';
+import { ContainerForm, InputForm, ButtonForm, Title } from './ContactsForm.styled';
 import { useForm } from 'react-hook-form';
 import { useAddContactsMutation,  useGetAllContactsQuery } from 'redux/contactsAPI';
 
@@ -27,7 +27,7 @@ const ContactsForm = () => {
         })}
       >
         <label htmlFor="name">
-          <h3>Name</h3>
+          <Title>Name</Title>
           <InputForm
             type="text"
             name="name"
@@ -39,7 +39,7 @@ const ContactsForm = () => {
           />
         </label>
         <label>
-          <h3>Number</h3>
+          <Title>Number</Title>
           <InputForm
             htmlFor="number"
             type="tel"
@@ -51,7 +51,7 @@ const ContactsForm = () => {
             placeholder="Number"
           />
         </label>
-        <ButtonForm type="submit">Add contacts</ButtonForm>
+        <ButtonForm type="submit"></ButtonForm>
       </form>
     </ContainerForm>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContactListLi, ContactTitle } from './ContactsList.styled';
+import { ContactListLi, ContactTitle, Button, Name } from './ContactsList.styled';
 import { useSelector } from 'react-redux/es/exports';
 import { useGetAllContactsQuery, useDeleteContactMutation } from 'redux/contactsAPI'; 
 
@@ -26,12 +26,11 @@ const handeleDelete = async (id) => {
       <ContactTitle>Contacts</ContactTitle>
       {filterByName().map(({ id, name, phone }) => (
         <ContactListLi key={id}>
-          <span>
+         <Name>
             {name}: {phone}
-          </span>
-          <button type="button" onClick={() => handeleDelete(id)}>
-            Delete
-          </button>
+          </Name>
+          <Button type="button" onClick={() => handeleDelete(id)}>
+          </Button>
         </ContactListLi>
       ))}
     </ul>
