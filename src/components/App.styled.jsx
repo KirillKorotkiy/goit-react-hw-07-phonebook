@@ -15,5 +15,16 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #85a9ff;
-  
+  position: relative;
+  ::before {
+    content: '';
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #050f64;
+    top: -10px;
+  }
 `;
+
+

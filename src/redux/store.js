@@ -4,7 +4,7 @@ import { contactsApi } from './contactsAPI';
 
 export const store = configureStore({
   reducer: {
-    contacts: contactSlice.reducer,
+    Contacts: contactSlice.reducer,
     [contactsApi.reducerPath]: contactsApi.reducer,
   },
   middleware: getDefaultMiddleware => [

@@ -1,36 +1,45 @@
 import React from 'react';
-import { ContactListLi, ContactTitle, Button, Name } from './ContactsList.styled';
-import { useSelector } from 'react-redux/es/exports';
-import { useGetAllContactsQuery, useDeleteContactMutation } from 'redux/contactsAPI'; 
+import {
+  ContactListLi,
+  ContactTitle,
+  Button,
+  Name,
+} from './ContactsList.styled';
+import {
+  useGetAllContactsQuery,
+  useDeleteContactMutation,
+} from 'redux/contactsAPI';
+import Filter from 'components/filter/Filter';
+import { useState } from 'react';
+import { useMemo } from 'react';
 
 const ContactsList = () => {
-  const { data =[] } = useGetAllContactsQuery();
-  const contacts = data
-  const [ deleteContact] = useDeleteContactMutation()
+  const { data = [] } = useGetAllContactsQuery();
+  const contacts = data;
+  const [deleteContact] = useDeleteContactMutation();
+  const [filter, setFilter] = useState('');
 
-  const filter = useSelector(state => state.contacts.filter)
+  const handeleDelete = async id => {
+    await deleteContact(id).unwrap();
+  };
 
-const handeleDelete = async (id) => {
-  await deleteContact(id).unwrap()
-}
-
- const filterByName = () => {
+  const filterByName = useMemo(() => {
     const normalaizedFilter = filter.toLowerCase();
-    const filtredContacts = contacts.filter(item =>
+    return contacts.filter(item =>
       item.name.toLowerCase().includes(normalaizedFilter)
     );
-    return filtredContacts;
-  }
+  }, [filter, contacts]);
+
   return (
     <ul>
+      <Filter value={filter} onChange={setFilter} />
       <ContactTitle>Contacts</ContactTitle>
-      {filterByName().map(({ id, name, phone }) => (
+      {filterByName.map(({ id, name, phone }) => (
         <ContactListLi key={id}>
-         <Name>
+          <Name>
             {name}: {phone}
           </Name>
-          <Button type="button" onClick={() => handeleDelete(id)}>
-          </Button>
+          <Button type="button" onClick={() => handeleDelete(id)}></Button>
         </ContactListLi>
       ))}
     </ul>
