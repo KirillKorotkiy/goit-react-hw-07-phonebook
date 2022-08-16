@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const ContainerTitle = styled.h3`
   margin-bottom: 15px;
-  padding-top: 10px;
+  padding-top: 25px;
 `;
 
 export const Container = styled.div`
@@ -18,9 +18,9 @@ export const Container = styled.div`
   position: relative;
   ::before {
     content: '';
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
+    height: 30px;
+    width: 120px;
+    border-radius: 5px;
     position: absolute;
     background-color: #050f64;
     top: -10px;
