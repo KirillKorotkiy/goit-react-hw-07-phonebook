@@ -5,30 +5,17 @@ import {
   Button,
   Name,
 } from './ContactsList.styled';
-import {
-  useGetAllContactsQuery,
-  useDeleteContactMutation,
-} from 'redux/contactsAPI';
+import { useDeleteContactMutation } from 'redux/contactsAPI';
 import Filter from 'components/filter/Filter';
-import { useState } from 'react';
-import { useMemo } from 'react';
+import { useFilter } from 'components/hook/useFilter';
 
 const ContactsList = () => {
-  const { data = [] } = useGetAllContactsQuery();
-  const contacts = data;
   const [deleteContact] = useDeleteContactMutation();
-  const [filter, setFilter] = useState('');
+  const { filterByName, filter, setFilter } = useFilter();
 
   const handeleDelete = async id => {
     await deleteContact(id).unwrap();
   };
-
-  const filterByName = useMemo(() => {
-    const normalaizedFilter = filter.toLowerCase();
-    return contacts.filter(item =>
-      item.name.toLowerCase().includes(normalaizedFilter)
-    );
-  }, [filter, contacts]);
 
   return (
     <ul>
